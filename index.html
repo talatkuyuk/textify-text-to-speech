@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" href="index.css">
+    <title>Textify</title>
+</head>
+<body>
+
+    <div class="page-container">
+
+        <section class="appbar">
+            <h1>Transcript your voice</h1>
+        </section>
+
+        <section class="content-container">
+            <div class="title">
+                Result
+                <div class="tools">
+                    <span class="material-icons" onclick="handleCopyButton();">content_copy</span>
+                    <span class="material-icons" onclick="handleClearButton();">clear</span>
+                </div>
+            </div>
+            <div class="result">
+                <textarea id="content" class="gray" name="content">Press the microphone button "considering behaviour on the left" to get transcript of your speech...</textarea>
+                <span class="confidence"></span>
+            </div>
+            <div class="form-container">
+                <form action="https://yelproject.herokuapp.com/" method="POST" id="myForm">
+                    <input type="hidden" id="text" name="text">
+                    <span class="material-icons">mood</span>
+                    <input type="submit" value="Get My Mood Better" class="getMyMood">
+                    <span class="material-icons blink">double_arrow</span>
+                </form> 
+            </div>
+            
+        </section>
+
+        <section class="record-container">
+            <div class="behaviour">
+                  <label>
+                    <input type="radio" class="option-input radio" name="tap" value="long-tap"  />
+                    <span>LongTap - Talk - Release</span> 
+                  </label>
+                  <label>
+                    <input type="radio" class="option-input radio" name="tap" value="once-tap" checked/>
+                    <span>Click - and - Talk</span> 
+                  </label>
+            </div>
+            <div class="microphone">
+                <div class="outer-1"></div>
+                <div class="outer-2"></div>
+                <button class="talk" alt="Press Mic"></button>
+            </div>
+        </section>
+
+        <section class="settings-container">
+
+            <div class="title">Settings</div>
+
+            <div class="main">
+
+                <div class="language">
+                    <label class="english">
+                        <input type="radio" class="option-input radio" name="lang" value="en-US" checked />
+                        <span>English</span>
+                        <img src="https://restcountries.eu/data/usa.svg" alt="american flag">
+                    </label>
+                    <label class="turkish">
+                        <input type="radio" class="option-input radio" name="lang" value="tr-TR" />
+                        <span>Türkçe</span>
+                        <img src="https://restcountries.eu/data/tur.svg" alt="turkish flag">
+                    </label>    
+                </div>
+
+                <div class="set">
+                    <div class="set-item set-1">
+                        <span>Set to see interim result</span>
+                        <label for="interim">
+                            <input type="checkbox" class="toggle-checkbox" id="interim" checked>  
+                            <div class="toggle">
+                              <div class="toggle-pill"></div>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="set-item set-2">
+                        <span>Set to record continuously</span>
+                        <label for="continuous">
+                            <input type="checkbox" class="toggle-checkbox" id="continuous">  
+                            <div class="toggle">
+                              <div class="toggle-pill"></div>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="set-item set-3">
+                        <span>Set to listen after talk</span>
+                        <label for="listen">
+                            <input type="checkbox" class="toggle-checkbox" id="listen">  
+                            <div class="toggle">
+                              <div class="toggle-pill"></div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <div id="snackbar">The text is copied to clipboard.</div>
+    <script src="app.js"></script>
+</body>
+</html>
